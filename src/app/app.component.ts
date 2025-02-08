@@ -6,10 +6,13 @@ import { ContractListComponent } from "./contract-list/contract-list.component";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, ContractListComponent],
+  imports: [ContractListComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'course_tm';
+  showForm = true;
+
+
+
 }

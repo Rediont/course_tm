@@ -1,8 +1,11 @@
 <ul>
-  @for (item of items; track $index)
+  @for (item of items; track item ; let ii = $index)
   {
   <li>
-    {{item}}
+      <p> {{ ii + 1 }}</p>
+      <p> {{ item.id }} </p>
+      <p> {{ item.type }}</p>
+      <p> {{ item.getCustomerCredentials() }} </p>
   </li>
   }
 </ul>

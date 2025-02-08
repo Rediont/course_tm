@@ -1,13 +1,26 @@
-import { IListItem } from "./listItemInterface"
+import { CustomerClass } from "./customer";
 
-export class contractItem implements IListItem {
-  public id: number;
-  public name: string;
+export class ContractItem {
+  public readonly id: number;
+  private Customer : CustomerClass;
+  public readonly creationDate: Date;
+  public readonly insuranceAmount : number;
+  public readonly type: string;
 
-  constructor(id : number, name : string){
+  constructor(id : number, customer : CustomerClass , type : string, creationDate: Date, insuranceAmount : number){
     this.id = id;
-    this.name = name;
+    this.Customer = customer;
+    this.creationDate = creationDate;
+    this.insuranceAmount = insuranceAmount;
+    this.type = type;
   }
 
+  public getCustomerId(){
+    return this.Customer.id;
+  }
+
+  public getCustomerCredentials(){
+    return this.Customer.name;
+  }
 
 }

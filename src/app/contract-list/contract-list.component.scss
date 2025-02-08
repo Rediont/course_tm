@@ -1,0 +1,15 @@
+ul{
+  margin-top: 5px;
+  padding: 0px 0px 0px 0px;
+  justify-content: start;
+}
+
+li{
+  display: flex;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  border: 2px solid black;
+  flex-direction: row;
+  justify-content: space-around;
+
+}
