@@ -5,11 +5,44 @@ ul{
 }
 
 li{
-  display: flex;
-  margin-top: 5px;
-  margin-bottom: 5px;
-  border: 2px solid black;
-  flex-direction: row;
-  justify-content: space-around;
-
+  list-style: none;
+  padding-top: 5px;
 }
+
+mat-card {
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+}
+
+.index {
+  display: flex;
+  width: 5%;
+  align-self: center;
+  color: #7d00fa;
+  justify-content: center;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  min-width: auto;
+  width: 20%;
+  color: #7d00fa;
+  justify-content: center;
+}
+
+.cardheader {
+  min-width: auto;
+  width: 10%;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  color: #7d00fa;
+  align-self: center;
+}
+

@@ -4,6 +4,9 @@
 }
 
 .side-menu{
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
   height: 97vh;
   border-right: 2px solid black;
   justify-content: start;
@@ -23,8 +26,12 @@ nav{
   flex-grow: 4;
 }
 
-.side-menu{
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
+button {
+  margin-top: 5px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.contract-button {
+  background-color: aliceblue;
 }

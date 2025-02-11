@@ -3,19 +3,19 @@
 </nav>
 
 <div class="container">
-  <div class="side-menu">
-    <button style="margin-top: 5px;
-      margin-left: 5px;
-      margin-right: 5px;">
-      My Contracts
-    </button>
-    <button style="margin-top: 5px;
-    margin-left: 5px;
-    margin-right: 5px;">
-      Create Contract
-    </button>
-  </div>
-  <div class="contract-list">
-    <contract-list></contract-list>
-  </div>
+  @if(true){
+    <div class="side-menu">
+      <button mat-raised-button class="contract-button">My Contracts</button>
+      <button mat-raised-button class="create-button">Create Contract</button>
+    </div>
+    <div class="contract-list" >
+      <contract-list></contract-list>
+    </div>
+  }
+  @else {
+    <div class="side-menu">
+      <button mat-raised-button class="contract-button">All Contracts</button>
+      <button mat-raised-button class="sallary-button">Calculate Sallary</button>
+    </div>
+  }
 </div>

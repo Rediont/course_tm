@@ -2,12 +2,15 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ContractItem } from '../ClassFolder/contractListItem';
 import { CustomerClass } from '../ClassFolder/customer';
+import {MatCardModule} from '@angular/material/card';
 
 @Component({
   selector: 'contract-list',
+  imports:[MatCardModule],
   templateUrl: './contract-list.component.html',
   styleUrl: './contract-list.component.scss'
 })
+
 export class ContractListComponent {
   items : ContractItem[] = [
     new ContractItem(12342,new CustomerClass(1,'misha','Lviv','+380000000'),'health',new Date,1000),

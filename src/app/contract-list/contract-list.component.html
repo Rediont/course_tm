@@ -2,10 +2,36 @@
   @for (item of items; track item ; let ii = $index)
   {
   <li>
-      <p> {{ ii + 1 }}</p>
-      <p> {{ item.id }} </p>
-      <p> {{ item.type }}</p>
-      <p> {{ item.getCustomerCredentials() }} </p>
+    <mat-card appearance="outlined" color="primary">
+      <div class="container">
+        <div class="index">
+          <p>{{ii+1}}</p>
+        </div>
+        <mat-card-header class="cardheader">
+          ID: {{item.id}}
+        </mat-card-header>
+        <div class="content">
+          <mat-card-content>
+            Type: {{item.type}}
+          </mat-card-content>
+        </div>
+        <div class="content">
+          <mat-card-content>
+            Client: {{item.getCustomerCredentials()}}
+          </mat-card-content>
+        </div>
+        <div class="content">
+          <mat-card-content>
+            Amount: {{item.insuranceAmount}}$
+          </mat-card-content>
+        </div>
+        <div class="content">
+          <mat-card-content>
+            Creation Date: {{item.creationDate.toLocaleDateString('en-GB')}}
+          </mat-card-content>
+        </div>
+      </div>
+    </mat-card>
   </li>
   }
 </ul>
