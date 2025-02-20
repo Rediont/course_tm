@@ -24,6 +24,14 @@ nav{
 .contract-list{
   padding: 5px 5px 5px 5px;
   flex-grow: 4;
+  min-width: 60%;
+}
+
+.test-contract {
+  padding: 5px 5px 5px 5px;
+  flex-grow: 4;
+  min-width: 60%;
+  min-height: 80%;
 }
 
 button {
@@ -34,4 +42,9 @@ button {
 
 .contract-button {
   background-color: aliceblue;
+}
+
+contract-display {
+  display: block;
+  height: 100%;
 }
