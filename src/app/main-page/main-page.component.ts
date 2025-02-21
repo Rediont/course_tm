@@ -7,9 +7,6 @@ import { MatButton } from '@angular/material/button';
 @Component({
   selector: 'main-page',
   imports: [
-      ContractListComponent,
-      MatButton,
-      ContractDisplayComponent,
       RouterLink,
       RouterOutlet
     ],

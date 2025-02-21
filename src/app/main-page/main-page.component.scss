@@ -6,8 +6,8 @@
 .side-menu{
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
   height: 97vh;
+  min-width: 20%;
   border-right: 2px solid black;
   justify-content: start;
 }
@@ -35,9 +35,18 @@ nav{
 }
 
 a {
+  display: flex;
+  justify-content: center;  /* Center horizontally */
+  align-items: center;
+  text-decoration: none;
   margin-top: 5px;
   margin-left: 5px;
   margin-right: 5px;
+  min-width: 20%;
+  min-height: 5%;
+  border: 2px pink solid;
+  border-radius: 10px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
 }
 
 .contract-button {
