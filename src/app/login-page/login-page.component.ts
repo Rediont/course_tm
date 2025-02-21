@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { NgIf } from '@angular/common';
@@ -14,7 +14,7 @@ export class LoginPageComponent {
   username = ''
   password = ''
   errorMessage = ''
-  apiUrl = 'https://localhost:3000/login/'
+  apiUrl = 'http://localhost:3000/login/'
 
   constructor(private http: HttpClient, private router: Router){}
 
