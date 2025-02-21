@@ -1,24 +1,9 @@
 <nav>
-  <label id="CurrenUser"> User </label>
+  <div> {{ currentUser }}, Admin: {{isAdmin}} </div>
 </nav>
 
 <div class="container">
-  @if(false){
-    <div class="side-menu">
-      <button mat-raised-button class="contract-button">My Contracts</button>
-      <button mat-raised-button class="create-button">Create Contract</button>
-    </div>
-    <div class="contract-list" >
-      <contract-list></contract-list>
-    </div>
-  }
-  @else {
-    <div class="side-menu">
-      <button mat-raised-button class="contract-button">All Contracts</button>
-      <button mat-raised-button class="sallary-button">Calculate Sallary</button>
-    </div>
-    <div class="test-contract">
-      <contract-display class="display"></contract-display>
-    </div>
-  }
+
+  <router-outlet></router-outlet>
+
 </div>

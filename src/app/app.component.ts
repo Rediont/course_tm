@@ -1,22 +1,23 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import {MatButton} from '@angular/material/button';
-import {MatTooltip} from '@angular/material/tooltip';
+import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 
 import { filter, range, map } from 'rxjs';
-import { ContractListComponent } from "./contract-list/contract-list.component";
-import { ContractDisplayComponent } from "./contract-display/contract-display.component";
+import { LoginPageComponent } from "./login-page/login-page.component";
 
 @Component({
   selector: 'app-root',
   imports: [
-    ContractListComponent,
-    MatButton,
-    ContractDisplayComponent
+    RouterOutlet,
+    RouterLink,
+    RouterLinkActive,
+    LoginPageComponent
 ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
+  isAdmin : boolean = false;
+  currentUser : string = '';
 
+  constructor() {}
 }
