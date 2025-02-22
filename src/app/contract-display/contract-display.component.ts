@@ -2,9 +2,8 @@ import { Component } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { ContractItem } from '../ClassFolder/contractListItem';
 import { MatDividerModule } from '@angular/material/divider';
-import { CustomerClass } from '../ClassFolder/customer';
-import { CompanyBranch } from '../ClassFolder/companyBranch';
-import { EmployeeClass } from '../ClassFolder/Employee';
+import { ActivatedRoute } from '@angular/router';
+import { ContractsService } from '../services/contract.service/contracts.service';
 
 @Component({
   selector: 'contract-display',
@@ -13,6 +12,18 @@ import { EmployeeClass } from '../ClassFolder/Employee';
   styleUrl: './contract-display.component.scss'
 })
 export class ContractDisplayComponent {
-  ThisContract? : ContractItem = new ContractItem(12342,new CustomerClass(1,'misha','Lviv','+380000000'),'health',new Date,1000
-  , new CompanyBranch(1,"Lviv","street","+3800000000"), new EmployeeClass(1,"Max","Maximus","street2","+3800000001"))
+  currentContract! : ContractItem;
+
+  constructor(private contractService: ContractsService, private route: ActivatedRoute)  {}
+
+  ngOnInit() {
+    // Отримуємо `id` з URL
+    this.route.paramMap.subscribe(params => {
+      const contractId = Number(params.get('id')); // Конвертуємо в число
+      if (!isNaN(contractId)) {
+        this.currentContract = this.contractService.getContractDisplay(contractId);
+      }
+    });
+  }
+
 }

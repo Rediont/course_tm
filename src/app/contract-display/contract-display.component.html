@@ -1,29 +1,29 @@
 <mat-card>
   <mat-card-header>
-    Contract# {{ThisContract?.id}}
+    Contract# {{currentContract?.id}}
   </mat-card-header>
   <div class="container">
     <mat-divider></mat-divider>
     <mat-card-content>
       <div class="contract-fragment">
-        <div class="item"> Customer: {{ThisContract?.getCustomerCredentials()}}</div>
-        <div class="item"> Insurance Type: {{ThisContract?.type}}</div>
-        <div class="item"> Insurance Amount: {{ThisContract?.insuranceAmount}} </div>
+        <div class="item"> Customer: {{currentContract?.getCustomerCredentials()}}</div>
+        <div class="item"> Insurance Type: {{currentContract?.type}}</div>
+        <div class="item"> Insurance Amount: {{currentContract?.insuranceAmount}} </div>
       </div>
     </mat-card-content>
     <mat-divider></mat-divider>
     <mat-card-content>
       <div class="contract-fragment">
-        <div class="item"> Employee: {{ThisContract?.getEmployeeCredentials()}} </div>
-        <div class="item"> Contact Phone: {{ThisContract?.getEmployeePhoneNumber()}} </div>
-        <div class="item"> Date: {{ThisContract?.creationDate?.toLocaleDateString('en-GB')}} </div>
+        <div class="item"> Employee: {{currentContract?.getEmployeeCredentials()}} </div>
+        <div class="item"> Contact Phone: {{currentContract?.getEmployeePhoneNumber()}} </div>
+        <div class="item"> Date: {{currentContract?.creationDate?.toLocaleDateString('en-GB')}} </div>
       </div>
     </mat-card-content>
     <mat-divider></mat-divider>
   </div>
   <mat-card-footer class="contract-footer">
-    <div> Branch: {{ThisContract?.getBranchName()}} </div>
-    <div> Addres: {{ThisContract?.getBranchAddress()}} </div>
-    <div> Date: {{ThisContract?.creationDate?.toLocaleDateString('en-GB')}} </div>
+    <div> Branch: {{currentContract?.getBranchName()}} </div>
+    <div> Addres: {{currentContract?.getBranchAddress()}} </div>
+    <div> Date: {{currentContract?.creationDate?.toLocaleDateString('en-GB')}} </div>
   </mat-card-footer>
 </mat-card>

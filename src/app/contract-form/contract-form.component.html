@@ -1,29 +1,31 @@
 <div>
   <p>Contract</p>
+
   <mat-divider></mat-divider>
   <label>Client Information</label>
   <div class="client-fields">
     <mat-form-field appearance="outline">
       <mat-label>Name</mat-label>
-      <input matInput placeholder="name">
+      <input type="text" matInput [(ngModel)] = "clientName" name="ClientName">
       <mat-hint>Name</mat-hint>
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label>Surname</mat-label>
-      <input matInput placeholder="surname">
+      <input type="text" matInput [(ngModel)] = "clientSurname" name="ClientSurname">
       <mat-hint>Surname</mat-hint>
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label>Address</mat-label>
-      <input matInput placeholder="address">
+      <input type="text" matInput [(ngModel)] = "clientAddress" name="ClientAddress">
       <mat-hint>Address</mat-hint>
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label>Phone Number</mat-label>
-      <input matInput placeholder="phone number">
+      <input type="text" matInput [(ngModel)] = "clientPhone" name="ClientPhone">
       <mat-hint>Phone Number</mat-hint>
     </mat-form-field>
   </div>
+
   <mat-divider></mat-divider>
   <label>Insurance Type</label>
   <div class="insurance-fields">
@@ -31,21 +33,22 @@
       <mat-label>Select</mat-label>
       <mat-select>
         @for (item of items; track $index) {
-          <mat-option value="one">{{ item }}</mat-option>
+          <mat-option value={{$index}}>{{ item }}</mat-option>
         }
       </mat-select>
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label>Amount</mat-label>
-      <input matInput placeholder="insurance amount">
+      <input matInput>
       <mat-hint>Insurance Amount</mat-hint>
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label>Duration</mat-label>
-      <input matInput placeholder="duration">
+      <input matInput>
       <mat-hint>Duration</mat-hint>
     </mat-form-field>
   </div>
+  <mat-divider></mat-divider>
   <div>
     <button class="submit-button">submit</button>
   </div>

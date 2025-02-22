@@ -4,29 +4,52 @@ import { CustomerClass } from '../ClassFolder/customer';
 import { MatCardModule } from '@angular/material/card';
 import { CompanyBranch } from '../ClassFolder/companyBranch';
 import { EmployeeClass } from '../ClassFolder/Employee';
-import { Observable, startWith } from 'rxjs';
+import { Observable } from 'rxjs';
 import { ContractsService } from '../services/contract.service/contracts.service';
+import { NgFor, NgIf, AsyncPipe, DatePipe } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'contract-list',
   standalone: true,
-  imports:[MatCardModule],
+  imports:[
+    MatCardModule,
+    NgFor,
+    NgIf,
+    AsyncPipe,
+    DatePipe,
+    RouterLink
+  ],
   templateUrl: './contract-list.component.html',
   styleUrl: './contract-list.component.scss'
 })
 
 export class ContractListComponent implements OnInit {
-  public contracts: ContractItem[];
+  public contracts : Observable<ContractItem[]>;
+
+  private page : number = 1;
 
   constructor(private contractService: ContractsService) {
-    this.contracts = this.contractService.contracts;
+    this.contracts = this.contractService.contracts$;
+  }
+
+  public trackByFn(index: number, item: ContractItem): number {
+    return item.id; // Унікальний ідентифікатор кожного контракту
   }
 
   public ngOnInit(): void {
-    this.contractService.setContracts([
-      new ContractItem(12342,new CustomerClass(1,'misha','Lviv','+380000000'),'health',new Date,1000, new CompanyBranch(1,"Lviv","street","+3800000000"), new EmployeeClass(1,"Max","Maximus","street2","+3800000002")),
-      new ContractItem(123232,new CustomerClass(2,'misha2','Lviv','+380000001'),'health',new Date,10000 , new CompanyBranch(1,"Lviv","street","+3800000000"), new EmployeeClass(1,"Max","Maximus","street2","+3800000003")),
-      new ContractItem(123232,new CustomerClass(2,'misha2','Lviv','+380000001'),'health',new Date,10000 , new CompanyBranch(1,"Lviv","street","+3800000000"), new EmployeeClass(1,"Max","Maximus","street2","+3800000004"))
-    ]);
+    this.contractService.fetchContracts(this.page);
+  }
+
+  public displayNextPage() {
+    console.log(this.page)
+    this.page++
+    this.contractService.fetchContracts(this.page);
+  }
+
+  public displayPrevPage() {
+    console.log(this.page)
+    this.page--
+    this.contractService.fetchContracts(this.page);
   }
 }

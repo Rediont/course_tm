@@ -11,7 +11,7 @@ export const routes: Routes = [
   {path: '' , component: MainPageComponent,
     children: [
       // {path: 'salary'},
-      {path: 'contract-display', component: ContractDisplayComponent},
+      {path: 'contract-display/:id', component: ContractDisplayComponent},
       {path: 'contract-create', component: ContractFormComponent},
       // {path: 'client'},
       {path: 'contract-list', component: ContractListComponent}
