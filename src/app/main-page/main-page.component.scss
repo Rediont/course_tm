@@ -1,0 +1,59 @@
+.container{
+  display: flex;
+  flex-direction: row;
+}
+
+.side-menu{
+  display: flex;
+  flex-direction: column;
+  height: 97vh;
+  min-width: 20%;
+  border-right: 2px solid black;
+  justify-content: start;
+}
+
+nav{
+  display: flex;
+  flex-direction: row;
+  background-color: rgb(205, 208, 214);
+  width: 100%;
+  border-bottom:2px solid black;
+  justify-content: center;
+}
+
+.contract-list{
+  padding: 5px 5px 5px 5px;
+  flex-grow: 4;
+  min-width: 60%;
+}
+
+.test-contract {
+  padding: 5px 5px 5px 5px;
+  flex-grow: 4;
+  min-width: 60%;
+  min-height: 80%;
+}
+
+a {
+  display: flex;
+  justify-content: center;  /* Center horizontally */
+  align-items: center;
+  text-decoration: none;
+  margin-top: 5px;
+  margin-left: 5px;
+  margin-right: 5px;
+  min-width: 20%;
+  min-height: 5%;
+  border: 2px pink solid;
+  border-radius: 10px;
+  box-shadow: 2px 2px 5px rgba(188, 111, 111, 0.5);
+}
+
+.contract-button {
+  background-color: aliceblue;
+}
+
+contract-display {
+  display: block;
+  height: 100%;
+}

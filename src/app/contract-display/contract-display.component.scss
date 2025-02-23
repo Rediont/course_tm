@@ -1,0 +1,27 @@
+mat-card {
+  height: 100%;
+}
+
+mat-card-header {
+  padding: 2% 2% 2% 2%;
+}
+
+mat-card-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding-top: 2%;
+  padding-bottom: 2%;
+}
+
+.item {
+  padding: 1% 1% 1% 1%;
+}
+
+.contract-footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding-top: 2%;
+  padding-bottom: 2%;
+}

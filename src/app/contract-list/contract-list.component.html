@@ -1,0 +1,40 @@
+<div *ngIf="contracts | async as contracts">
+  <ul>
+    <li *ngFor="let contract of contracts; let ii = index; trackBy: trackByFn" [routerLink]="['/contract-display' , ii]">
+      <mat-card appearance="outlined" color="primary">
+        <div class="container">
+          <div class="index">
+            <p>{{ii+1}}</p>
+          </div>
+          <mat-card-header class="cardheader">
+            ID: {{contract.id}}
+          </mat-card-header>
+          <div class="content">
+            <mat-card-content>
+              Type: {{contract.getInsuranceName()}}
+            </mat-card-content>
+          </div>
+          <div class="content">
+            <mat-card-content>
+              Client: {{contract.getCustomerCredentials()}} <!-- Викликаємо метод -->
+            </mat-card-content>
+          </div>
+          <div class="content">
+            <mat-card-content>
+              Amount: {{contract.insuranceAmount}}$
+            </mat-card-content>
+          </div>
+          <div class="content">
+            <mat-card-content>
+              Creation Date: {{contract.creationDate | date}} <!-- Додано pipe для форматування дати -->
+            </mat-card-content>
+          </div>
+        </div>
+      </mat-card>
+    </li>
+  </ul>
+  <div class="page-buttons">
+    <a (click) = "displayPrevPage()">prev</a>
+    <a (click) = "displayNextPage()">next</a>
+  </div>
+</div>
