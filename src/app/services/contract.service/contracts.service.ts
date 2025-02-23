@@ -5,6 +5,7 @@ import { CompanyBranch } from '../../ClassFolder/companyBranch';
 import { ContractItem } from '../../ClassFolder/contractListItem';
 import { CustomerClass } from '../../ClassFolder/customer';
 import { EmployeeClass } from '../../ClassFolder/Employee';
+import { Insurance } from '../../ClassFolder/insurance';
 
 @Injectable({
   providedIn: 'root'
@@ -59,11 +60,18 @@ export class ContractsService {
             contract.employee.branch.address,
           );
 
+          const insurance = new Insurance(
+            contract.insuranceType.id,
+            contract.insuranceType.name,
+            contract.insuranceType.description,
+            contract.insuranceType.wageRate
+          );
+
           return new ContractItem(
             contract.id,
             customer,
-            contract.insuranceType.name,
             new Date(contract.date),
+            insurance,
             contract.insuranceAmount,
             branch,
             employee

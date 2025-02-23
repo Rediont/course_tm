@@ -1,23 +1,24 @@
 import { CompanyBranch } from "./companyBranch";
 import { CustomerClass } from "./customer";
 import { EmployeeClass } from "./Employee";
+import { Insurance } from "./insurance";
 
 export class ContractItem {
   public readonly id: number;
   private Customer : CustomerClass;
   public readonly creationDate: Date;
+  private Insurance : Insurance;
   public readonly insuranceAmount : number;
-  public readonly type: string;
   private Branch : CompanyBranch;
   private Employee : EmployeeClass;
 
-  constructor(id : number, customer : CustomerClass , type : string, creationDate: Date,
-     insuranceAmount : number, branch : CompanyBranch, emloyee : EmployeeClass){
+  constructor(id : number, customer : CustomerClass , creationDate: Date,
+    insurance : Insurance, insuranceAmount : number, branch : CompanyBranch, emloyee : EmployeeClass){
     this.id = id;
     this.Customer = customer;
     this.creationDate = creationDate;
+    this.Insurance = insurance;
     this.insuranceAmount = insuranceAmount;
-    this.type = type;
     this.Branch = branch;
     this.Employee = emloyee;
   }
@@ -44,6 +45,18 @@ export class ContractItem {
 
   public getEmployeePhoneNumber(){
     return this.Employee.phoneNumber;
+  }
+
+  public getInsuranceId() {
+    return this.Insurance.id;
+  }
+
+  public getInsuranceName() {
+    return this.Insurance.name;
+  }
+
+  public getInsuranceDescription() {
+    return this.Insurance.description;
   }
 
 }

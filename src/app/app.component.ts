@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
-import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
-
-import { filter, range, map } from 'rxjs';
-import { LoginPageComponent } from "./login-page/login-page.component";
+import { RouterOutlet } from '@angular/router';
+import { UserService } from './services/user.service/user.service';
 
 @Component({
   selector: 'app-root',
@@ -13,8 +11,13 @@ import { LoginPageComponent } from "./login-page/login-page.component";
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  isAdmin : boolean = false;
-  currentUser : string = '';
+  isAdmin! : boolean;
+  currentUserName : string = '';
 
-  constructor() {}
+  constructor(private userService : UserService)
+  {
+    this.userService.isAdmin$.subscribe(status => {
+      this.isAdmin = status
+    })
+  }
 }

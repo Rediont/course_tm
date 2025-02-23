@@ -1,29 +1,36 @@
 <mat-card>
   <mat-card-header>
-    Contract# {{currentContract?.id}}
+    Contract# {{currentContract.id}}
   </mat-card-header>
   <div class="container">
     <mat-divider></mat-divider>
-    <mat-card-content>
+    <mat-card-content class="client-info">
       <div class="contract-fragment">
-        <div class="item"> Customer: {{currentContract?.getCustomerCredentials()}}</div>
-        <div class="item"> Insurance Type: {{currentContract?.type}}</div>
-        <div class="item"> Insurance Amount: {{currentContract?.insuranceAmount}} </div>
+        <div class="item"> Customer: {{currentContract.getCustomerCredentials()}}</div>
+        <div class="item"> Insurance Type: {{currentContract.getInsuranceId()}}</div>
+        <div class="item"> Insurance Amount: {{currentContract.insuranceAmount}} </div>
       </div>
     </mat-card-content>
     <mat-divider></mat-divider>
-    <mat-card-content>
+    <mat-card-content class="employee-info">
       <div class="contract-fragment">
-        <div class="item"> Employee: {{currentContract?.getEmployeeCredentials()}} </div>
-        <div class="item"> Contact Phone: {{currentContract?.getEmployeePhoneNumber()}} </div>
-        <div class="item"> Date: {{currentContract?.creationDate?.toLocaleDateString('en-GB')}} </div>
+        <div class="item"> Employee: {{currentContract.getEmployeeCredentials()}} </div>
+        <div class="item"> Contact Phone: {{currentContract.getEmployeePhoneNumber()}} </div>
+        <div class="item"> Date: {{currentContract.creationDate.toLocaleDateString('en-GB')}} </div>
+      </div>
+    </mat-card-content>
+    <mat-divider></mat-divider>
+    <mat-card-content class="insurance-info">
+      <div class="contract-fragment">
+        <div class="item"> Insurance type: {{currentContract.getInsuranceName()}} </div>
+        <div class="item"> Descrition: {{currentContract.getInsuranceDescription()}} </div>
       </div>
     </mat-card-content>
     <mat-divider></mat-divider>
   </div>
   <mat-card-footer class="contract-footer">
-    <div> Branch: {{currentContract?.getBranchName()}} </div>
-    <div> Addres: {{currentContract?.getBranchAddress()}} </div>
-    <div> Date: {{currentContract?.creationDate?.toLocaleDateString('en-GB')}} </div>
+    <div> Branch: {{currentContract.getBranchName()}} </div>
+    <div> Addres: {{currentContract.getBranchAddress()}} </div>
+    <div> Date: {{currentContract.creationDate.toLocaleDateString('en-GB')}} </div>
   </mat-card-footer>
 </mat-card>

@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
-import { ContractListComponent } from "../contract-list/contract-list.component";
-import { ContractDisplayComponent } from "../contract-display/contract-display.component";
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
-import { MatButton } from '@angular/material/button';
+import { UserService } from '../services/user.service/user.service';
 
 @Component({
   selector: 'main-page',
@@ -14,5 +12,15 @@ import { MatButton } from '@angular/material/button';
   styleUrl: './main-page.component.scss'
 })
 export class MainPageComponent {
-  isAdmin : boolean = false;
+  isAdmin! : boolean;
+
+  constructor(private userService : UserService){}
+
+  ngOnInit(){
+    this.userService.isAdmin$.subscribe(status => {
+      this.isAdmin = status
+    })
+    console.log(this.isAdmin);
+  }
+
 }

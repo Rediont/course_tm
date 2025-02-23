@@ -31,25 +31,25 @@
   <div class="insurance-fields">
     <mat-form-field>
       <mat-label>Select</mat-label>
-      <mat-select>
-        @for (item of items; track $index) {
-          <mat-option value={{$index}}>{{ item }}</mat-option>
+      <mat-select [(ngModel)]="insuranceType" name="insuranceType">
+        @for (item of insuranceItems; track $index) {
+          <mat-option value={{$index}}>{{ item.name }}</mat-option>
         }
       </mat-select>
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label>Amount</mat-label>
-      <input matInput>
+      <input matInput [(ngModel)]="insuranceAmount" name="insuranceAmount">
       <mat-hint>Insurance Amount</mat-hint>
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label>Duration</mat-label>
-      <input matInput>
+      <input matInput [(ngModel)]="duration" name="duration">
       <mat-hint>Duration</mat-hint>
     </mat-form-field>
   </div>
   <mat-divider></mat-divider>
   <div>
-    <button class="submit-button">submit</button>
+    <button class="submit-button" (click)="createContract()">submit</button>
   </div>
 </div>
