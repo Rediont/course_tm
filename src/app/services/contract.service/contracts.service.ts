@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, first, firstValueFrom } from 'rxjs';
+import { BehaviorSubject, firstValueFrom } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { CompanyBranch } from '../../ClassFolder/companyBranch';
 import { ContractItem } from '../../ClassFolder/contractListItem';
@@ -57,18 +57,19 @@ export class ContractsService {
             contract.client.address
           );
 
+          const branch = new CompanyBranch(
+            contract.employee.branch.id,
+            contract.employee.branch.name,
+            contract.employee.branch.address,
+          );
+
           const employee = new EmployeeClass(
             contract.employee.id,
             contract.employee.name,
             contract.employee.surname,
             contract.employee.branch,
-            contract.employee.phoneNumber
-          );
-
-          const branch = new CompanyBranch(
-            contract.employee.branch.id,
-            contract.employee.branch.name,
-            contract.employee.branch.address,
+            contract.employee.phoneNumber,
+            branch
           );
 
           const insurance = new Insurance(
