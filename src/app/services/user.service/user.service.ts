@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { EmployeeClass } from '../../ClassFolder/Employee';
+import { CompanyBranch } from '../../ClassFolder/companyBranch';
 
 @Injectable({
   providedIn: 'root'
@@ -25,7 +26,7 @@ export class UserService {
         this.currentUserId = response.id;
         this.isAdminSubject.next(response.privileges === 'admin');
         console.log('Login successful:', response);
-        this.router.navigate(['']);
+        this.router.navigate(['main-page']);
       },
       error: (error) => {
         console.error('Login failed:', error);
@@ -44,12 +45,19 @@ export class UserService {
   public fetchCurrentEmployee() {
     this.http.get(`${this.apiUrl}/employee/${this.currentUserId}`).subscribe({
       next: (responseForEmployee : any) => {
+        const branch = new CompanyBranch(
+          responseForEmployee.branch.id,
+          responseForEmployee.branch.name,
+          responseForEmployee.branch.address
+        )
+
         const newEmployee = new EmployeeClass(
           responseForEmployee.id,
           responseForEmployee.name,
           responseForEmployee.surname,
           responseForEmployee.address,
-          responseForEmployee.phoneNumber
+          responseForEmployee.phoneNumber,
+          branch
         )
         this.Employee = newEmployee;
       }

@@ -42,14 +42,14 @@ export class ContractListComponent implements OnInit {
   }
 
   public displayNextPage() {
-    console.log(this.page)
     this.page++
+    console.log(this.page)
     this.contractService.fetchContracts(this.page);
   }
 
   public displayPrevPage() {
-    console.log(this.page)
     this.page--
+    console.log(this.page)
     this.contractService.fetchContracts(this.page);
   }
 }

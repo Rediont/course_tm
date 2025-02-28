@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, firstValueFrom } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { CompanyBranch } from '../../ClassFolder/companyBranch';
 import { ContractItem } from '../../ClassFolder/contractListItem';
 import { CustomerClass } from '../../ClassFolder/customer';
 import { EmployeeClass } from '../../ClassFolder/Employee';
 import { Insurance } from '../../ClassFolder/insurance';
+import { UserService } from '../user.service/user.service';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,7 @@ export class ContractsService {
 
   public currentContractDisplay! : ContractItem;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private userService: UserService) {}
 
   get contracts() : ContractItem[] {
     return this._contracts$.getValue();
@@ -34,8 +35,18 @@ export class ContractsService {
     return this.contracts[id];
   }
 
-  public fetchContracts(page: number): void {
-    this.http.get<any[]>(`http://localhost:3000/contracts/show/${page}`)
+  public async fetchContracts(page: number): Promise<void> {
+    let url;
+    let isAdmin = await firstValueFrom(this.userService.isAdmin$)
+    console.log(isAdmin)
+    if(isAdmin){
+      url = `http://localhost:3000/contracts/show/${page}`
+    }
+    else{
+      url = `http://localhost:3000/contracts/show/employee/${page}?employeeId=${this.userService.CurrentUserId}`
+    }
+
+    this.http.get<any[]>(url)
       .subscribe(contracts => {
         const contractItems = contracts.map(contract => {
           const customer = new CustomerClass(
@@ -46,18 +57,19 @@ export class ContractsService {
             contract.client.address
           );
 
+          const branch = new CompanyBranch(
+            contract.employee.branch.id,
+            contract.employee.branch.name,
+            contract.employee.branch.address,
+          );
+
           const employee = new EmployeeClass(
             contract.employee.id,
             contract.employee.name,
             contract.employee.surname,
             contract.employee.branch,
-            contract.employee.phoneNumber
-          );
-
-          const branch = new CompanyBranch(
-            contract.employee.branch.id,
-            contract.employee.branch.name,
-            contract.employee.branch.address,
+            contract.employee.phoneNumber,
+            branch
           );
 
           const insurance = new Insurance(
