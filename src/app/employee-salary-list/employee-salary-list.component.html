@@ -1,6 +1,6 @@
 <div *ngIf="employees | async as employees">
   <ul>
-    <li *ngFor="let employee of employees; let ii = index; trackBy: trackByFn" [routerLink]="['/contract-display' , ii]">
+    <li *ngFor="let employee of employees; let ii = index; trackBy: trackByFn">
       <mat-card appearance="outlined" color="primary">
         <div class="container">
           <div class="index">
@@ -24,12 +24,21 @@
               Branch: {{employee.branch.name}}
             </mat-card-content>
           </div>
+          <div class="content">
+            <mat-card-content>
+              Salary: {{ salaryDictionary[employee.id] }}
+            </mat-card-content>
+          </div>
+          <div class="content checkbox">
+            <mat-checkbox [checked]="idForSalary.includes(employee.id)"  (change)="onCheckboxChange(ii + 1, $event.checked)"></mat-checkbox>
+          </div>
         </div>
       </mat-card>
     </li>
   </ul>
   <div class="page-buttons">
     <a (click) = "displayPrevPage()">prev</a>
+    <button (click)="calculateSalary()">Calculate Salary</button>
     <a (click) = "displayNextPage()">next</a>
   </div>
 </div>

@@ -64,3 +64,15 @@ a {
   flex-direction: row;
   justify-content: center;
 }
+
+button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px pink solid;
+  border-radius: 10px;
+  width:100px ;
+  padding: 5px 5px 5px 5px;
+  margin: 5px 5px 5px 5px;
+  box-shadow: 2px 2px 5px rgba(188, 111, 111, 0.5);
+}

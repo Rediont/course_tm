@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, of } from 'rxjs';
 import { EmployeeClass } from '../../ClassFolder/Employee';
 import { HttpClient } from '@angular/common/http';
 import { CompanyBranch } from '../../ClassFolder/companyBranch';
+import { url } from 'inspector';
+import { response } from 'express';
 
 @Injectable({
   providedIn: 'root'
@@ -46,7 +48,17 @@ export class EmployeeService {
     }, error => {
       console.error("Error fetching contracts:", error);
     })
+  }
 
+  public fetchSalary(employees : number[]){
+    let salary : Record<number, number> = {};
+    for(let employeeId of employees) {
+      this.http.get<any>(`http://localhost:3000/salary/${employeeId}`).subscribe(response =>{
+        salary[employeeId] = response.salary;
+      })
+    }
+    console.log(salary);
+    return salary;
   }
 
 }
